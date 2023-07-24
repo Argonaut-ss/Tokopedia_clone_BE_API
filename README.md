@@ -9,7 +9,7 @@
 
 Tokopedia Play Clone Database Schema
 
-![Table product](./docs/images/product_table.png) ![Table comment](./docs/images/comment_table.png)
+![Table Videos](./docs/images/videos_table.png) ![Table product](./docs/images/product_table.png) ![Table comment](./docs/images/comment_table.png)
 
 ## Swagger
 
