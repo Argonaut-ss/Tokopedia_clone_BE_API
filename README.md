@@ -7,7 +7,7 @@
 
 ## Database Schema
 
-Tokopedia Play Clone Schema Database
+Tokopedia Play Clone Database Schema
 
 ![Table Videos](./docs/images/videos_table.png) ![Table product](./docs/images/product_table.png) ![Table comment](./docs/images/comment_table.png)
 
