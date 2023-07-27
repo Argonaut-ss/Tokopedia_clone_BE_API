@@ -268,11 +268,11 @@
                 },
                 "title": {
                   "type": "string",
-                  "example": "Diskon Peripheral Gaming"
+                  "example": "God Of War Trailer"
                 },
                 "thumbnail": {
                   "type": "string",
-                  "example": "https://localhost:3000/images/diskon-peripheral-gaming.jpg"
+                  "example": "https://localhost:3000/images/god-of-war-trailer.jpg"
                 }
               }
             }
@@ -309,7 +309,7 @@
                 },
                 "title": {
                   "type": "string",
-                  "example": "Diskon Peripheral Gaming"
+                  "example": "Monitor MSI"
                 },
                 "price": {
                   "type": "number",
