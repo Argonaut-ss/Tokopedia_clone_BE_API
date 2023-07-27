@@ -3,6 +3,8 @@ import "dotenv/config";
 import bodyParser from "body-parser";
 import express from "express";
 import mongoose from "mongoose";
+import { responses } from "./helper/response.js";
+import { errorMiddleware } from "./middleware/error-middleware.js";
 const mongostring = process.env.DATABASE_URL;
 
 mongoose.connect(mongostring);
@@ -19,6 +21,7 @@ database.once("connected", () => {
 import routes from "./routes/routes.js";
 const app = express();
 
+app.use(responses);
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
@@ -27,7 +30,8 @@ app.use(
 );
 
 app.use(routes);
+app.use(errorMiddleware);
 
-app.listen(process.env.port || 3000, () => {
-  console.log(`Server Started at ${process.env.PORT || 3000}`);
+app.listen(process.env.port, () => {
+  console.log(`Server Started at ${process.env.PORT}`);
 });
