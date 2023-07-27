@@ -1,7 +1,11 @@
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
-  url: {
+  video_id: {
+    required: true,
+    type: String
+  },
+  url_product: {
     required: true,
     type: String
   },
