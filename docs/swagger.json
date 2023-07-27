@@ -33,13 +33,45 @@
       "get": {
         "tags": ["Videos"],
         "summary": "Return List of Video",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "god of war"
+            }
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Success get all videos",
+            "description": "Success Get All Videos",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Videos"
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": "true"
+                    },
+                    "code": {
+                      "type": "number",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Success Get All Videos"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Videos"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -50,6 +82,112 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/addVideo": {
+      "post": {
+        "tags": ["Videos"],
+        "summary": "Add new Video",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "example": "God Of War Trailer"
+                  },
+                  "url_video": {
+                    "type": "string",
+                    "example": "https://localhost:3000/images/god-of-war-trailer.jpg"
+                  },
+                  "url_thumbnail": {
+                    "type": "string",
+                    "example": "https://localhost:3000/images/bjabsd8b234jhbs"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success Added Video",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": "true"
+                    },
+                    "code": {
+                      "type": "number",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Success Added Videos"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Videos"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Failed to Add Video",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": "false"
+                    },
+                    "code": {
+                      "type": "number",
+                      "example": 400
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Failed to Add Video"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": []
+                    },
+                    "errors": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": []
+                    }
+                  }
                 }
               }
             }
@@ -79,27 +217,172 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "asodiuhjas890u123"
+              "example": "64c247d0c3cf0e157831cc01"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Success get all product",
+            "description": "Success Get All Products",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Product"
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": "true"
+                    },
+                    "code": {
+                      "type": "number",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Success Get All Products"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Products"
+                      }
+                    }
+                  }
                 }
               }
             }
           },
           "404": {
-            "description": "product Not Found",
+            "description": "Products Not Found",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/addProduct/{videoId}": {
+      "post": {
+        "tags": ["Product"],
+        "summary": "Add new Video",
+        "parameters": [
+          {
+            "name": "videoId",
+            "in": "path",
+            "description": "ID of video to return",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "64c247d0c3cf0e157831cc01"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "imgUrl": {
+                    "type": "string",
+                    "example": "https://localhost:3000/images/monitor-msi.jpg"
+                  },
+                  "videoUrl": {
+                    "type": "string",
+                    "example": "https://localhost:3000/bjabsd8b234jhbs"
+                  },
+                  "title": {
+                    "type": "string",
+                    "example": "Monitor MSI"
+                  },
+                  "price": {
+                    "type": "number",
+                    "example": 1000000
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success Added Product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": "true"
+                    },
+                    "code": {
+                      "type": "number",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Success Added Product"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Products"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Failed to Add Product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": "false"
+                    },
+                    "code": {
+                      "type": "number",
+                      "example": 400
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Failed to Add Product"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": []
+                    },
+                    "errors": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": []
+                    }
+                  }
                 }
               }
             }
@@ -129,17 +412,37 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "asodiuhjas890u123"
+              "example": "64c247d0c3cf0e157831cc01"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Success get all comment",
+            "description": "Success Get All Comments",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Comment"
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": "true"
+                    },
+                    "code": {
+                      "type": "number",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Success Get All Comments"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Comments"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -179,47 +482,91 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "asodiuhjas890u123"
-            }
-          },
-          {
-            "name": "username",
-            "in": "query",
-            "description": "Name Of User",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "example": "samy"
-            }
-          },
-          {
-            "name": "message",
-            "in": "query",
-            "description": "Comment Message",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "example": "bagus banget"
+              "example": "64c247d0c3cf0e157831cc01"
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "example": "samy"
+                  },
+                  "comment_message": {
+                    "type": "string",
+                    "example": "bagus banget"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Success Posted Comment",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Comment"
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": "true"
+                    },
+                    "code": {
+                      "type": "number",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Success To Post Comments"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Comments"
+                    }
+                  }
                 }
               }
             }
           },
-          "422": {
-            "description": "Fail",
+          "400": {
+            "description": "Failed to Post Comment",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UnprocessableEntity"
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": "false"
+                    },
+                    "code": {
+                      "type": "number",
+                      "example": 400
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Failed to Post Comment"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": []
+                    },
+                    "errors": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": []
+                    }
+                  }
                 }
               }
             }
@@ -238,142 +585,93 @@
       }
     }
   },
-  
 
   "components": {
     "schemas": {
       "Videos": {
         "type": "object",
         "properties": {
-          "status": {
-            "type": "boolean",
-            "example": "true"
-          },
-          "code": {
-            "type": "number",
-            "example": 200
-          },
-          "message": {
+          "id": {
             "type": "string",
-            "example": "Success Get All Videos"
+            "example": "64c247d0c3cf0e157831cc01"
           },
-          "data": {
+          "title": {
+            "type": "string",
+            "example": "God Of War Trailer"
+          },
+          "url_video": {
+            "type": "string",
+            "example": "https://localhost:3000/videos/godofwar"
+          },
+          "url_thumbnail": {
+            "type": "string",
+            "example": "https://localhost:3000/images/god-of-war-trailer.jpg"
+          }
+        }
+      },
+      "Products": {
+        "type": "object",
+        "properties": {
+          "video-id": {
+            "type": "string",
+            "example": "64c247d0c3cf0e157831cc01"
+          },
+          "id": {
+            "type": "string",
+            "example": "64c24802c3cf0e157831cc04"
+          },
+          "img_url": {
+            "type": "string",
+            "example": "https://google.com/monitor_msi.jpg"
+          },
+          "title": {
+            "type": "string",
+            "example": "Monitor MSI"
+          },
+          "price": {
+            "type": "number",
+            "example": 1000000
+          },
+          "price_fmt": {
+            "type": "string",
+            "example": "RP. 1.000.000"
+          },
+          "links": {
             "type": "array",
             "items": {
               "type": "object",
               "properties": {
-                "id": {
+                "product_detail": {
                   "type": "string",
-                  "example": "asodiuhjas890u123"
-                },
-                "title": {
-                  "type": "string",
-                  "example": "Diskon Peripheral Gaming"
-                },
-                "thumbnail": {
-                  "type": "string",
-                  "example": "https://localhost:3000/images/diskon-peripheral-gaming.jpg"
+                  "example": "https://google.com/monitormsi"
                 }
               }
             }
           }
         }
       },
-      "Product": {
+      "Comments": {
         "type": "object",
         "properties": {
-          "status": {
-            "type": "boolean",
-            "example": "true"
-          },
-          "code": {
-            "type": "number",
-            "example": 200
-          },
-          "message": {
+          "video-id": {
             "type": "string",
-            "example": "Success Get All Product"
+            "example": "64c247d0c3cf0e157831cc01"
           },
-          "data": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "video-id": {
-                  "type": "string",
-                  "example": "asodiuhjas890u123"
-                },
-                "id": {
-                  "type": "string",
-                  "example": "asodiuhjas890u123"
-                },
-                "title": {
-                  "type": "string",
-                  "example": "Diskon Peripheral Gaming"
-                },
-                "price": {
-                  "type": "number",
-                  "example": 1000000
-                },
-                "price_fmt": {
-                  "type": "string",
-                  "example": "RP. 1.000.000"
-                },
-                "links": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "product_detail": {
-                        "type": "string",
-                        "example": "https://localhost:3000/api/product/asodiuhjas890u123"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "Comment": {
-        "type": "object",
-        "properties": {
-          "status": {
-            "type": "boolean",
-            "example": "true"
+          "id": {
+            "type": "string",
+            "example": "64c24802c3cf0e157831cc04"
           },
-          "code": {
-            "type": "number",
-            "example": 200
+          "username": {
+            "type": "string",
+            "example": "samy"
           },
-          "data": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "video-id": {
-                  "type": "string",
-                  "example": "asodiuhjas890u123"
-                },
-                "id": {
-                  "type": "string",
-                  "example": "asodiuhjas890u123"
-                },
-                "username": {
-                  "type": "string",
-                  "example": "samy"
-                },
-                "comment": {
-                  "type": "string",
-                  "example": "bagus banget"
-                },
-                "timestamp": {
-                  "type": "string",
-                  "example": "24 juli 2023"
-                }
-              }
-            }
+          "commentMessage": {
+            "type": "string",
+            "example": "bagus banget"
+          },
+          "timestamp": {
+            "type": "string",
+            "example": "24 juli 2023"
           }
         }
       },
