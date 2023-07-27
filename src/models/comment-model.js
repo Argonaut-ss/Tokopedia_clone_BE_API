@@ -1,16 +1,16 @@
 import mongoose from "mongoose";
 
-const videoSchema = new mongoose.Schema(
+const commentSchema = new mongoose.Schema(
   {
-    title: {
+    video_id: {
       required: true,
       type: String
     },
-    url_video: {
+    username: {
       required: true,
       type: String
     },
-    url_thumbnail: {
+    comment_message: {
       required: true,
       type: String
     }
@@ -18,4 +18,4 @@ const videoSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("Video", videoSchema);
+export default mongoose.model("comment", commentSchema);
