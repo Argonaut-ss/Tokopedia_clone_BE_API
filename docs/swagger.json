@@ -1,13 +1,475 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "description": "API Documentation for Tokopedia Play Clone API",
+    "description": "API Documentation for Tokopedia Play Clone API\n\nSome useful link :\n - [Github](https://github.com/Argonaut-ss)\n - [Tokopedia Play Clone Repository](https://github.com/Argonaut-ss/Tokopedia_play_clone_BE_API) ",
     "version": "1.0.0",
     "title": "Tokopedia Play Clone API",
     "contact": {
       "email": "samysyafta@gmail.com"
     }
-  }
+  },
 
+  "servers": [
+    {
+      "url": "https://localhost/docs/api"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Videos",
+      "description": "Everything about videos"
+    },
+    {
+      "name": "Product",
+      "description": "Everything about product"
+    },
+    {
+      "name": "Comment",
+      "description": "Everything about comment"
+    }
+  ],
+  "paths": {
+    "/videos": {
+      "get": {
+        "tags": ["Videos"],
+        "summary": "Return List of Video",
+        "responses": {
+          "200": {
+            "description": "Success get all videos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Videos"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Video Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product/{videoId}": {
+      "get": {
+        "tags": ["Product"],
+        "summary": "Return List of product",
+        "parameters": [
+          {
+            "name": "videoId",
+            "in": "path",
+            "description": "ID of video to return",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "asodiuhjas890u123"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get all product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "product Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/comment/{videoId}": {
+      "get": {
+        "tags": ["Comment"],
+        "summary": "Return List of comment",
+        "parameters": [
+          {
+            "name": "videoId",
+            "in": "path",
+            "description": "ID of video to return",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "asodiuhjas890u123"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get all comment",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Comment"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "comment Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/addComment/{videoId}": {
+      "post": {
+        "tags": ["Comment"],
+        "summary": "Add new Comment",
+        "parameters": [
+          {
+            "name": "videoId",
+            "in": "path",
+            "description": "ID of video to return",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "asodiuhjas890u123"
+            }
+          },
+          {
+            "name": "username",
+            "in": "query",
+            "description": "Name Of User",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "samy"
+            }
+          },
+          {
+            "name": "message",
+            "in": "query",
+            "description": "Comment Message",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "bagus banget"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Comment"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Fail",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnprocessableEntity"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
   
+
+  "components": {
+    "schemas": {
+      "Videos": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "boolean",
+            "example": "true"
+          },
+          "code": {
+            "type": "number",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "Success Get All Videos"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": "asodiuhjas890u123"
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Diskon Peripheral Gaming"
+                },
+                "thumbnail": {
+                  "type": "string",
+                  "example": "https://localhost:3000/images/diskon-peripheral-gaming.jpg"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Product": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "boolean",
+            "example": "true"
+          },
+          "code": {
+            "type": "number",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "Success Get All Product"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "video-id": {
+                  "type": "string",
+                  "example": "asodiuhjas890u123"
+                },
+                "id": {
+                  "type": "string",
+                  "example": "asodiuhjas890u123"
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Diskon Peripheral Gaming"
+                },
+                "price": {
+                  "type": "number",
+                  "example": 1000000
+                },
+                "price_fmt": {
+                  "type": "string",
+                  "example": "RP. 1.000.000"
+                },
+                "links": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "product_detail": {
+                        "type": "string",
+                        "example": "https://localhost:3000/api/product/asodiuhjas890u123"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "Comment": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "boolean",
+            "example": "true"
+          },
+          "code": {
+            "type": "number",
+            "example": 200
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "video-id": {
+                  "type": "string",
+                  "example": "asodiuhjas890u123"
+                },
+                "id": {
+                  "type": "string",
+                  "example": "asodiuhjas890u123"
+                },
+                "username": {
+                  "type": "string",
+                  "example": "samy"
+                },
+                "comment": {
+                  "type": "string",
+                  "example": "bagus banget"
+                },
+                "timestamp": {
+                  "type": "string",
+                  "example": "24 juli 2023"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ErrorNotFound": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "boolean",
+            "example": "false"
+          },
+          "code": {
+            "type": "number",
+            "example": 404
+          },
+          "message": {
+            "type": "string",
+            "example": "Data Not Found"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": []
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": []
+          }
+        }
+      },
+      "InternalServerError": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "boolean",
+            "example": "false"
+          },
+          "code": {
+            "type": "number",
+            "example": 500
+          },
+          "message": {
+            "type": "string",
+            "example": "Internal Server Error"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": []
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": []
+          }
+        }
+      },
+      "UnprocessableEntity": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "boolean",
+            "example": "false"
+          },
+          "code": {
+            "type": "number",
+            "example": 422
+          },
+          "message": {
+            "type": "string",
+            "example": "UnprocessableEntity"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": []
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": []
+          }
+        }
+      }
+    }
+  }
 }
