@@ -6,6 +6,7 @@
     - [Video](#videos)
     - [Product](#products)
     - [Comment](#comments)
+- [How To Run](#how-to-run)
 - [API Documentation](#api-documentation)
 - [LICENSE](#license)
 
