@@ -414,7 +414,24 @@ Return Posted Comment
   "errors": []
 }
 ```
+ ## How To Run
 
+Prerequisite
+- Node^20.0.0
+- NPM^9.6.7
+- MongoDB^6.0.6
+
+1. Clone This Repo
+2. Install Node Packages
+```
+npm install
+```
+3. Install MongoDB Community
+4. Setup The Environment or Rename .env.example to .env
+5. Run The Project
+```
+npm start
+```
 ## API Documentation
 
 API documentation at [localhost:3000/docs/api](http://localhost:3000/docs/api)
