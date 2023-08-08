@@ -182,8 +182,8 @@ Return All Products
       "id": "64c28a13380224e9df03452d",
       "videoId": "64c28a13380224e9df0392f1",
       "title": "Mouse Gaming Murah",
-      "productUrl": "https://google.com/monitormsi",
-      "imgUrl": "https://localhost:3000/images/mouse-gaming-murah.jpg",
+      "url_product": "https://google.com/monitormsi",
+      "url_image": "https://localhost:3000/images/mouse-gaming-murah.jpg",
       "price": 20000,
       "priceFormat": "Rp. 20.000",
     }
@@ -250,8 +250,8 @@ Return Added Product
       "id": "64c28a13380224e9df8238t2",
       "videoId": "64c28a13380224e9df0392f1",
       "title": "Mouse Gaming Murah",
-      "imgUrl": "https://localhost:3000/images/mouse-gaming-murah.jpg",
-      "productUrl": "https://google.com/monitormsi",
+      "url_image": "https://localhost:3000/images/mouse-gaming-murah.jpg",
+      "url_product": "https://google.com/monitormsi",
       "price": 20000,
       "priceFormat": "Rp. 20.000",
     }
