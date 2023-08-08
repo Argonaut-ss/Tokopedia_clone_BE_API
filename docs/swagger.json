@@ -297,11 +297,11 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "imgUrl": {
+                  "url_product": {
                     "type": "string",
                     "example": "https://localhost:3000/images/monitor-msi.jpg"
                   },
-                  "videoUrl": {
+                  "url_image": {
                     "type": "string",
                     "example": "https://localhost:3000/bjabsd8b234jhbs"
                   },
@@ -620,7 +620,7 @@
             "type": "string",
             "example": "64c24802c3cf0e157831cc04"
           },
-          "img_url": {
+          "url_image": {
             "type": "string",
             "example": "https://google.com/monitor_msi.jpg"
           },
