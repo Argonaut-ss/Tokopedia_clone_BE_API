@@ -1,18 +1,12 @@
 import CommentService from "../services/comment-services.js";
+import validate from "../validation/index.js";
+import { addCommentValidation } from "../validation/comment-validation.js";
 
 class CommentController {
   static async addComment(req, res, next) {
     try {
-      const videoId = req.params.videoId;
-      const username = req.body.username;
-      const commentMessage = req.body.comment_message;
-      console.log(videoId, username, commentMessage);
-
-      const comment = await CommentService.addComment({
-        videoId,
-        username,
-        commentMessage
-      });
+      const commentData = validate(addCommentValidation, req);
+      const comment = await CommentService.addComment(commentData);
 
       res.success({
         code: 201,
