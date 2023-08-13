@@ -4,8 +4,6 @@ class CommentDTO {
     this.username = comment.username;
     this.commentMessage = comment.comment_message;
     this.timestamps = comment.createdAt;
-
-    
   }
 }
 

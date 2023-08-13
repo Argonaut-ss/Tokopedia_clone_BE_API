@@ -6,7 +6,7 @@ const videoSchema = new mongoose.Schema(
       required: true,
       type: String
     },
-    sotre_name: {
+    store_name: {
       required: true,
       type: String
     },
@@ -24,7 +24,7 @@ const videoSchema = new mongoose.Schema(
     },
     discount_coupon: {
       required: true,
-      type:Boolean,
+      type: Boolean,
       default: false
     },
     only_at_live: {
