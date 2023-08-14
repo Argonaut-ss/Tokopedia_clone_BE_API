@@ -6,6 +6,7 @@ export const addVideoValidation = Joi.object({
   url_video: Joi.string().required(),
   store_name: Joi.string().required(),
   total_view: Joi.number().required(),
-  discount_coupon: Joi.boolean().required(),
-  only_at_live: Joi.boolean().required()
+  discount_coupon: Joi.boolean().required().default(false),
+  only_at_live: Joi.boolean().required().default(false),
+  categories: Joi.array().required()
 });

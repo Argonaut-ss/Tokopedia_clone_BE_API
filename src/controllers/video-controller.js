@@ -6,7 +6,7 @@ import VideoDTO from "../dto/video-dto.js";
 class VideoController {
   static async getAllVideos(req, res, next) {
     try {
-      const search = req.query.search;
+      const search = req.query;
       const videos = await VideoService.getAllVideos(search);
 
       const data = videos.map((video) => new VideoDTO(video));
