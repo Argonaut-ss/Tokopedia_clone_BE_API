@@ -31,6 +31,10 @@ const videoSchema = new mongoose.Schema(
       required: true,
       type: Boolean,
       default: false
+    },
+    categories: {
+      required: true,
+      type: Array
     }
   },
   { timestamps: true }
