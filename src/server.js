@@ -5,9 +5,9 @@ import express from "express";
 import mongoose from "mongoose";
 import { responses } from "./helper/response.js";
 import { errorMiddleware } from "./middleware/error-middleware.js";
-const mongostring = process.env.DATABASE_URL;
+// const mongostring = process.env.DATABASE_URL;
 
-mongoose.connect(mongostring);
+mongoose.connect(process.env.DATABASE_URL);
 const database = mongoose.connection;
 
 database.on("error", (error) => {
