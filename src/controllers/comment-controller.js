@@ -1,6 +1,7 @@
 import CommentService from "../services/comment-services.js";
 import validate from "../validation/index.js";
 import { addCommentValidation } from "../validation/comment-validation.js";
+import CommentDTO from "../dto/comment-dto.js";
 
 class CommentController {
   static async addComment(req, res, next) {
@@ -11,12 +12,7 @@ class CommentController {
       res.success({
         code: 201,
         message: "Success Add comment",
-        data: {
-          id: comment._id,
-          username: comment.username,
-          commentMessage: comment.comment_message,
-          timestamps: comment.createdAt
-        }
+        data: new CommentDTO(comment)
       });
     } catch (error) {
       next(error);
@@ -28,18 +24,8 @@ class CommentController {
       const videoId = req.params.videoId;
 
       const comments = await CommentService.getAllComments(videoId);
-
-      const data = [];
-
-      comments.forEach((comment) => {
-        data.push({
-          id: comment._id,
-          username: comment.username,
-          commentMessage: comment.comment_message,
-          timestamps: comment.createdAt
-        });
-      });
-
+      const data = comments.map((comment)=> new CommentDTO(comment));
+      
       res.success({
         message: "Success Get All Comments By VideoID",
         data: data
