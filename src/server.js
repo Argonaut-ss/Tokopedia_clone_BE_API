@@ -5,7 +5,7 @@ import express from "express";
 // import mongoose from "mongoose";
 import { responses } from "./helper/response.js";
 import { errorMiddleware } from "./middleware/error-middleware.js";
-import mongooseConnection from "./configs/mongoose.js";
+import mongooseConnection from "./config/mongoose.js";
 // const mongostring = process.env.DATABASE_URL;
 
 // mongoose.connect(process.env.DATABASE_URL);
