@@ -120,6 +120,29 @@
                   "url_thumbnail": {
                     "type": "string",
                     "example": "https://localhost:3000/images/bjabsd8b234jhbs"
+                  },
+                  "store_name": {
+                    "type": "string",
+                    "example": "The Games Store"
+                  },
+                  "total_view": {
+                    "type": "number",
+                    "example": 329
+                  },
+                  "discount_coupon": {
+                    "type": "boolean",
+                    "example": false
+                  },
+                  "only_at_live": {
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "categories": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "example": "technology"
+                    }
                   }
                 }
               }
@@ -599,34 +622,65 @@
             "type": "string",
             "example": "God Of War Trailer"
           },
-          "url_video": {
+          "videoUrl": {
             "type": "string",
             "example": "https://localhost:3000/videos/godofwar"
           },
-          "url_thumbnail": {
+          "thumbnailUrl": {
             "type": "string",
             "example": "https://localhost:3000/images/god-of-war-trailer.jpg"
+          },
+          "totalView": {
+            "type": "string",
+            "example": 329
+          },
+          "storeName": {
+            "type": "string",
+            "example": "The Games Store"
+          },
+          "discountCoupon": {
+            "type": "boolean",
+            "example": false
+          },
+          "onlyAtLive": {
+            "type": "boolean",
+            "example": true
+          },
+          "timestamps": {
+            "type": "string",
+            "example": "2023-08-13T16:13:00.377Z"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "technology"
+            }
           }
         }
       },
       "Products": {
         "type": "object",
         "properties": {
-          "video-id": {
-            "type": "string",
-            "example": "64c247d0c3cf0e157831cc01"
-          },
           "id": {
             "type": "string",
             "example": "64c24802c3cf0e157831cc04"
           },
-          "url_image": {
+          "video-id": {
             "type": "string",
-            "example": "https://google.com/monitor_msi.jpg"
+            "example": "64c247d0c3cf0e157831cc01"
           },
           "title": {
             "type": "string",
             "example": "Monitor MSI"
+          },
+          "imageUrl": {
+            "type": "string",
+            "example": "https://google.com/monitor_msi.jpg"
+          },
+          "productUrl": {
+            "type": "string",
+            "example": "https://google.com/monitor_msi.jpg"
           },
           "price": {
             "type": "number",
@@ -636,30 +690,22 @@
             "type": "string",
             "example": "RP. 1.000.000"
           },
-          "links": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "product_detail": {
-                  "type": "string",
-                  "example": "https://google.com/monitormsi"
-                }
-              }
-            }
+          "timestamps": {
+            "type": "string",
+            "example": "2023-08-13T15:22:00.181Z"
           }
         }
       },
       "Comments": {
         "type": "object",
         "properties": {
-          "video-id": {
-            "type": "string",
-            "example": "64c247d0c3cf0e157831cc01"
-          },
           "id": {
             "type": "string",
             "example": "64c24802c3cf0e157831cc04"
+          },
+          "videoId": {
+            "type": "string",
+            "example": "64c247d0c3cf0e157831cc01"
           },
           "username": {
             "type": "string",
