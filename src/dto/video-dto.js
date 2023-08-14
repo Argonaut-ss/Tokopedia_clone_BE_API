@@ -9,6 +9,7 @@ class VideoDTO {
     this.discountCoupon = video.discount_coupon;
     this.onlyAtLive = video.only_at_live;
     this.timestamps = video.createdAt;
+    this.categories = video.categories;
   }
 }
 
