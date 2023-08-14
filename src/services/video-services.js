@@ -8,12 +8,8 @@ class VideoServices {
     return videos;
   }
 
-  static async addVideo({ title, urlThumbnail, urlVideo }) {
-    const video = new VideoModel({
-      title: title,
-      url_thumbnail: urlThumbnail,
-      url_video: urlVideo
-    });
+  static async addVideo(videoData) {
+    const video = new VideoModel(videoData);
     const videoSave = await video.save();
 
     return videoSave;

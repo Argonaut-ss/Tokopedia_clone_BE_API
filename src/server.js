@@ -20,7 +20,9 @@ database.once("connected", () => {
 
 import routes from "./routes/routes.js";
 const app = express();
+import cors from "cors";
 
+app.use(cors());
 app.use(responses);
 app.use(bodyParser.json());
 app.use(

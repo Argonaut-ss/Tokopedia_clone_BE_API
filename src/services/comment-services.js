@@ -1,12 +1,8 @@
 import Comment from "../models/comment-model.js";
 
 class CommentService {
-  static async addComment({ videoId, username, commentMessage }) {
-    const comment = new Comment({
-      video_id: videoId,
-      username: username,
-      comment_message: commentMessage
-    });
+  static async addComment(commentData) {
+    const comment = new Comment(commentData);
 
     const commentSave = await comment.save();
 
