@@ -2,21 +2,23 @@ import "dotenv/config";
 
 import bodyParser from "body-parser";
 import express from "express";
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 import { responses } from "./helper/response.js";
 import { errorMiddleware } from "./middleware/error-middleware.js";
+import mongooseConnection from "./configs/mongoose.js";
 // const mongostring = process.env.DATABASE_URL;
 
-mongoose.connect(process.env.DATABASE_URL);
-const database = mongoose.connection;
+// mongoose.connect(process.env.DATABASE_URL);
+// const database = mongoose.connection;
 
-database.on("error", (error) => {
-  console.log("Database is not Connected");
-  console.log(error);
-});
-database.once("connected", () => {
-  console.log("Database Connected");
-});
+// database.on("error", (error) => {
+//   console.log("Database is not Connected");
+//   console.log(error);
+// });
+// database.once("connected", () => {
+//   console.log("Database Connected");
+// });
+mongooseConnection();
 
 import routes from "./routes/routes.js";
 const app = express();
